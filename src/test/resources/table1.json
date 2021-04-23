@@ -1,5 +1,6 @@
 {
-	"fechaRegistro":"19/04/2021",
-	"registrante":"Darius Enterprise",
-	"registranteEmail":"Darioaldrey@gmail.com"
+	"registradoPor":"Dario Aldrey",
+	"areaNegocio": ["Desarrollo"],
+	"email":"darioaldrey@gmail.com",
+	"nombreProyecto":"Midas"
 }
