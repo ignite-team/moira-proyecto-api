@@ -25,12 +25,12 @@ import es.ozona.moira.proyecto.api.services.exceptions.ReadDocException;
 @Service
 public class ReadDocServiceImpl implements ReadDocService{
 	
-	public Map<String, Object> readEncodedDoc(String encodedFile) {
+	public Map<String, Object> readPdfForm(String encodedFile) {
 		InputStream form = decodeFileToInputStream(encodedFile);
-        return readEncodedDoc(form);
+        return readPdfForm(form);
 	}
 	
-	public Map<String, Object> readEncodedDoc(InputStream form){
+	public Map<String, Object> readPdfForm(InputStream form){
 		Map<String, Object> fieldValues = new HashMap<>();
 		
 		PDDocument pdDoc = null;

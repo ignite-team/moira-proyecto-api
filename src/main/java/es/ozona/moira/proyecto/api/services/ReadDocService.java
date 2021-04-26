@@ -7,6 +7,6 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 
 public interface ReadDocService {
-	public Map<String,Object> readEncodedDoc(String encodedFile);
-	public Map<String,Object> readEncodedDoc(InputStream form);
+	public Map<String,Object> readPdfForm(String encodedFile);
+	public Map<String,Object> readPdfForm(InputStream form);
 }

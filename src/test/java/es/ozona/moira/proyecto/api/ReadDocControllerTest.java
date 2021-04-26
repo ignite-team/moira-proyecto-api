@@ -1,37 +1,27 @@
 package es.ozona.moira.proyecto.api;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
-import org.apache.tomcat.util.json.ParseException;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import es.ozona.moira.proyecto.api.services.ReadDocService;
-
+import es.ozona.moira.proyecto.api.controller.ReadDocController;
 
 @SpringBootTest
-public class ReadDocServiceTest {
-	
+public class ReadDocControllerTest {
 	@Autowired
-	ReadDocService docService;
+	ReadDocController readDocController;
 	
 	ReadDocTestUtilities utilities;
 	
@@ -53,18 +43,14 @@ public class ReadDocServiceTest {
 	}
 	
 	@Test
-	public void readEncodedString() throws ParseException, IOException, org.json.simple.parser.ParseException {
-		Map<String, Object> fieldValues = docService.readPdfForm(encodedString);
-		utilities.assertMaps(fieldValues);
-	}
-	
-	@Test
-	public void readStream() throws IOException, org.json.simple.parser.ParseException {
-		FileInputStream stream = new FileInputStream(data);
-		Map<String, Object> fields = docService.readPdfForm(stream);
-		
+	public void readDocString() throws FileNotFoundException, IOException, ParseException {
+		Map<String, Object> fields = readDocController.readDoc(encodedString).getBody();
 		utilities.assertMaps(fields);
 	}
 	
-	
+	@Test
+	public void readDocStream() throws FileNotFoundException {
+		FileInputStream stream = new FileInputStream(data);
+		Map<String, Object> fields = readDocController.readDoc(stream).getBody();
+	}
 }

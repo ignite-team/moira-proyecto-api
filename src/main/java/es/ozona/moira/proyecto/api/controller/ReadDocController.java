@@ -36,7 +36,7 @@ public class ReadDocController {
 	@ResponseBody
 	@ApiOperation(value= "Read form document using a encodedString")
 	public ResponseEntity<Map<String, Object>> readDoc(@ApiParam(required=true, value="Document encoded on String base64") @RequestBody String encodedString){
-		return ResponseEntity.ok(readDocService.readEncodedDoc(encodedString));
+		return ResponseEntity.ok(readDocService.readPdfForm(encodedString));
 	}
 	
 	@GetMapping("/proyecto/readDoc/stream")
@@ -44,6 +44,6 @@ public class ReadDocController {
 	@ResponseBody
 	@ApiOperation(value= "Read form document using a stream")
 	public ResponseEntity<Map<String, Object>> readDoc(@ApiParam(required=true, value="Stream of the form") @RequestBody InputStream form){
-		return ResponseEntity.ok(readDocService.readEncodedDoc(form));
+		return ResponseEntity.ok(readDocService.readPdfForm(form));
 	}
 }
