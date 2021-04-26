@@ -18,13 +18,13 @@ public class ReadDocTestUtilities {
 	
 	public void assertMaps(Map<String, Object> fields) throws FileNotFoundException, IOException, org.json.simple.parser.ParseException {
 		JSONParser parser = new JSONParser();
-		JSONObject testData = (JSONObject) parser.parse(new FileReader("src\\test\\resources\\table1.json"));
+		JSONObject testData = (JSONObject) parser.parse(new FileReader("src\\test\\resources\\data.json"));
 		Map<String,Object> testDataMap = new ObjectMapper().readValue(testData.toJSONString(), HashMap.class);
-		
 		assertTrue(containsAll(fields, testDataMap));
 	}
 	
 	public boolean containsAll(Map<String,Object> jsonMap, Map<String,Object> testDataMap) {
+		
 		for (Entry<String, Object> entry : testDataMap.entrySet()) {
 		    if(!jsonMap.get(entry.getKey()).toString().equals(entry.getValue().toString())) {
 		    	return false;

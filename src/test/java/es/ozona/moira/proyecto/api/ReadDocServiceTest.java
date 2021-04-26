@@ -62,7 +62,6 @@ public class ReadDocServiceTest {
 	public void readStream() throws IOException, org.json.simple.parser.ParseException {
 		FileInputStream stream = new FileInputStream(data);
 		Map<String, Object> fields = docService.readPdfForm(stream);
-		
 		utilities.assertMaps(fields);
 	}
 	

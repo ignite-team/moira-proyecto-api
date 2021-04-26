@@ -49,8 +49,9 @@ public class ReadDocControllerTest {
 	}
 	
 	@Test
-	public void readDocStream() throws FileNotFoundException {
+	public void readDocStream() throws IOException, ParseException {
 		FileInputStream stream = new FileInputStream(data);
 		Map<String, Object> fields = readDocController.readDoc(stream).getBody();
+		utilities.assertMaps(fields);
 	}
 }
